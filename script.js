@@ -1,7 +1,7 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrhi');
+let lowOrHi = document.querySelector('.lowOrHi');
 
 const guessSubmit = document.querySelector('.guessSubmit');
 const guessField = document.querySelector('.guessField');
@@ -20,7 +20,8 @@ function checkGuess(){
     
     } else if (guessCount === 10){
         lastResult.textContent = 'Game Over!!!';
-      } else {
+    setGameOver();  
+    } else {
           lastResult.textContent = 'Wrong!';
           lastResult.style.backgroundColor = 'red';
           if (userGuess < randomNumber){
@@ -53,7 +54,7 @@ function resetGame(){
     guessCount = 1;
     
     const resetParas = document.querySelectorAll('.resultParas p');
-    for(let i = 0; i < resetParas.length; i++){
+    for(let i = 0; i < resetParas.length; i ++){
      resetParas[i].textContent = '';
     }
     resetButtom.parentNode.removeChild(resetButtom);
